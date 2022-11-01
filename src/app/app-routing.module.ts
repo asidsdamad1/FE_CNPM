@@ -10,8 +10,6 @@ const routes: Routes = [{
   path: 'wallet',
   component: ShowWalletComponent,
   loadChildren: () => import('./component/wallet/show/show-wallet-routing.module').then(module => module.ShowWalletRoutingModule)
-}, {
-
 }];
 
 @NgModule({
