@@ -1,17 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Options} from "@angular-slider/ngx-slider";
-import {TransactionService} from "../service/transaction.service";
-import {Transaction} from "../model/transaction";
+import {TransactionService} from "../../service/transaction.service";
+import {Transaction} from "../../model/transaction";
 import {Chart, registerables} from "chart.js";
-import {ExportService} from "../service/export.service";
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
-import {PageEvent} from "@angular/material/paginator";
-import {WalletService} from "../service/wallet.service";
+import {WalletService} from "../../service/wallet.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {Category} from "../model/category";
-import {CategoryService} from "../service/category.service";
+import {Category} from "../../model/category";
+import {CategoryService} from "../../service/category.service";
 
 Chart.register(...registerables);
 
@@ -27,7 +25,6 @@ export class HomeComponent implements OnInit {
 
   constructor(private transactionService: TransactionService,
               private categoryService: CategoryService,
-              private exportService: ExportService,
               private walletService: WalletService,
               private router: Router,
               private toast: NgToastService) {
@@ -311,33 +308,6 @@ export class HomeComponent implements OnInit {
         'Ghi chú': `${this.transactions[i].note}`
       })
     }
-  }
-
-  export() {
-    let timerInterval: any;
-    Swal.fire({
-      title: '<h3 style="color: #5ec05e"><img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw340" style="width: 100px;height: 100px"><\h3>',
-      html: 'Các giao dịch tải trong <b></b> mili giây',
-      timer: 1500,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading();
-        // @ts-ignore
-        const b = Swal.getHtmlContainer().querySelector('b');
-        timerInterval = setInterval(() => {
-          // @ts-ignore
-          b.textContent = Swal.getTimerLeft()
-        }, 100)
-      },
-      willClose: () => {
-        clearInterval(timerInterval);
-        this.exportService.exportExcel(this.transactionFile, 'danh_sach_giao_dich');
-      }
-    }).then((result) => {
-      /* Read more about handling dismissals below */
-      if (result.dismiss === Swal.DismissReason.timer) {
-      }
-    })
   }
 
   confirmDelete(id: number) {

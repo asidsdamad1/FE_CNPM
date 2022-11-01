@@ -10,23 +10,68 @@ import { DetailWalletComponent } from './component/wallet/detail/detail.componen
 import { ShowWalletComponent } from './component/wallet/show/show.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgToastModule} from "ng-angular-popup";
+import {AddTransactionComponent} from "./component/home/add-transaction/add-transaction.component";
+import {HomeComponent} from "./component/home/home.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatButtonModule} from "@angular/material/button";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {NgxPaginationModule} from "ngx-pagination";
+import {MatIconModule} from "@angular/material/icon";
+import {MatRadioModule} from "@angular/material/radio";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
+import {environment} from "../environments/environment";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {AngularFireModule} from "@angular/fire/compat";
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     SideBarComponent,
     NavBarComponent,
     AddWalletComponent,
     ShowWalletComponent,
-    DetailWalletComponent
+    DetailWalletComponent,
+    AddTransactionComponent
   ],
   imports: [
+    MatInputModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
-    NgToastModule,
+    HttpClientModule,
     ReactiveFormsModule,
     NgToastModule,
-    FormsModule
+    FormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    NgxSliderModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    NgxPaginationModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
