@@ -168,6 +168,7 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+
   }
 
   chart() {

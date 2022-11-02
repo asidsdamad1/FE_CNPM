@@ -31,6 +31,8 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
 import {environment} from "../environments/environment";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {AngularFireModule} from "@angular/fire/compat";
+import {AddCategoryComponent} from "./component/category/add-category/add.component";
+import {ShowCategoryComponent} from "./component/category/show-category/show.component";
 
 
 
@@ -43,7 +45,9 @@ import {AngularFireModule} from "@angular/fire/compat";
     AddWalletComponent,
     ShowWalletComponent,
     DetailWalletComponent,
-    AddTransactionComponent
+    AddTransactionComponent,
+    AddCategoryComponent,
+    ShowCategoryComponent
   ],
   imports: [
     MatInputModule,

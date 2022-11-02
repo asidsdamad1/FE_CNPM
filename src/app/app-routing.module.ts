@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ShowWalletComponent} from "./component/wallet/show/show.component";
 import {HomeComponent} from "./component/home/home.component";
+import {ShowCategoryComponent} from "./component/category/show-category/show.component";
 
 const routes: Routes = [{
   path: 'home',
@@ -10,6 +11,9 @@ const routes: Routes = [{
   path: 'wallet',
   component: ShowWalletComponent,
   loadChildren: () => import('./component/wallet/show/show-wallet-routing.module').then(module => module.ShowWalletRoutingModule)
+}, {
+  path: 'category',
+  component: ShowCategoryComponent
 }];
 
 @NgModule({

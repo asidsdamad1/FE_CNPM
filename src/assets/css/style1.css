@@ -3002,7 +3002,11 @@ table.dataTable {
   transition: .5s
 }
 
-.sidebar #sidebar_menu li a:hover::before {
+.sidebar #sidebar_menu li.active, .sidebar #sidebar_menu li:hover {
+  background-color: #fff;
+}
+
+.sidebar #sidebar_menu li:hover::before {
   width: 6px;
   opacity: 1;
   visibility: visible
@@ -3153,6 +3157,10 @@ table.dataTable {
   top: 38%
 }
 
+.sidebar {
+  background-color: #F7FAFF;
+}
+
 .sidebar::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
   background-color: #ddd
 }
@@ -3164,6 +3172,10 @@ table.dataTable {
 
 .sidebar::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
   background-color: #f8dbdd
+}
+
+.has-arrow:hover {
+  background-color: #0dcaf0;
 }
 
 body::-webkit-scrollbar {
@@ -3344,7 +3356,9 @@ body::-webkit-scrollbar {
   position: relative;
   min-height: 100vh;
   padding-bottom: 100px;
-  overflow: hidden
+  overflow: hidden;
+  background-color: #F7FAFF;
+
 }
 
 .main_content.main_content_padding_hide {
@@ -3385,7 +3399,8 @@ body::-webkit-scrollbar {
 .main_content .main_content_iner {
   min-height: 68vh;
   transition: .5s;
-  margin: 30px
+  margin: 30px;
+  background-color: #F7FAFF;
 }
 
 @media (max-width: 991px) {
@@ -3597,7 +3612,7 @@ body::-webkit-scrollbar {
 
 .white_box {
   padding: 30px;
-  background-color: rgba(247, 250, 255, .7);
+  /*background-color: rgba(247, 250, 255, .7);*/
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px
@@ -6046,6 +6061,9 @@ canvas#highlights {
   .messages_box_area {
     grid-template-columns:5fr 7fr
   }
+}
+.messages_box_area .messages_list {
+  background-color: #fff;
 }
 
 .messages_box_area .messages_list .serach_field_2 {
