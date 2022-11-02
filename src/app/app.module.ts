@@ -33,8 +33,10 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AddCategoryComponent} from "./component/category/add-category/add.component";
 import {ShowCategoryComponent} from "./component/category/show-category/show.component";
-
-
+import {LoginComponent} from "./component/login/login.component";
+import {ProfileComponent} from "./component/profile/profile.component";
+import {RegisterComponent} from "./component/register/register.component";
+import {ChangePasswordComponent} from "./component/change-password/change-password.component";
 
 @NgModule({
   declarations: [
@@ -47,7 +49,11 @@ import {ShowCategoryComponent} from "./component/category/show-category/show.com
     DetailWalletComponent,
     AddTransactionComponent,
     AddCategoryComponent,
-    ShowCategoryComponent
+    ShowCategoryComponent,
+    LoginComponent,
+    ProfileComponent,
+    RegisterComponent,
+    ChangePasswordComponent
   ],
   imports: [
     MatInputModule,
