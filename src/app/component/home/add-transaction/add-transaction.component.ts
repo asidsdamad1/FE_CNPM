@@ -28,6 +28,7 @@ export class AddTransactionComponent implements OnInit {
 
   constructor(private transactionService: TransactionService,
               private categoryService: CategoryService,
+              private router: Router,
               private toast: NgToastService) {
   }
 
@@ -70,6 +71,7 @@ export class AddTransactionComponent implements OnInit {
       setInterval(() => {
         location.reload()
       }, 600)
+      // this.router.navigate(['/home/'])
     }, error => {
       this.toast.error({detail: "Thông báo", summary: "Thêm giao dịch thất bại!", duration: 3000, position: 'br'})
 
