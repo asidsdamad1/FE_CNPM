@@ -25,7 +25,7 @@ export class TransactionService {
   }
 
   update(id: number, transaction: any): Observable<any> {
-    return this.httpClient.put(API + id, transaction);
+    return this.httpClient.put(API + 'update/' + id, transaction);
   }
 
   delete(id: any): Observable<any> {

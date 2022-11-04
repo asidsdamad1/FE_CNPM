@@ -59,25 +59,7 @@ export class ShowCategoryComponent implements OnInit {
 
   confirmDelete(id: number) {
     if (this.transactions.length < 1) {
-      let timerInterval: any;
-      Swal.fire({
-        title: '<h3 style="color: #5ec05e"><img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw340" style="width: 100px;height: 100px"><\h3>',
-        html: 'Danh mục sẽ được xóa trong <b></b> mili giây',
-        timer: 2850,
-        timerProgressBar: true,
-        didOpen: () => {
-          Swal.showLoading();
-          // @ts-ignore
-          const b = Swal.getHtmlContainer().querySelector('b');
-          timerInterval = setInterval(() => {
-            // @ts-ignore
-            b.textContent = Swal.getTimerLeft()
-          }, 100)
-        },
-        willClose: () => {
-          clearInterval(timerInterval);
-        }
-      }).then((result) => {
+
         this.categoryService.delete(id).subscribe(() => {
           this.toast.success({
             detail: "Thông báo",
@@ -88,9 +70,7 @@ export class ShowCategoryComponent implements OnInit {
           this.showCategory();
         })
         /* Read more about handling dismissals below */
-        if (result.dismiss === Swal.DismissReason.timer) {
-        }
-      })
+
     }
     else {
       Swal.fire({

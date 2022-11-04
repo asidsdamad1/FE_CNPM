@@ -70,6 +70,9 @@ export class AddTransactionComponent implements OnInit {
       setInterval(() => {
         location.reload()
       }, 600)
+    }, error => {
+      this.toast.error({detail: "Thông báo", summary: "Thêm giao dịch thất bại!", duration: 3000, position: 'br'})
+
     })
   }
 
@@ -80,4 +83,5 @@ export class AddTransactionComponent implements OnInit {
       this.color = category.color;
     })
   }
+
 }

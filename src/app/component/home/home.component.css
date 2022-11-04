@@ -129,3 +129,9 @@ button:hover {
   border: 1px solid #6aaaea;
   text-align: center;
 }
+
+.labelChart {
+  border: 1px solid #d0e1ef;
+  background: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
+}

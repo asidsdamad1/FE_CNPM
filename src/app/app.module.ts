@@ -37,6 +37,10 @@ import {LoginComponent} from "./component/login/login.component";
 import {ProfileComponent} from "./component/profile/profile.component";
 import {RegisterComponent} from "./component/register/register.component";
 import {ChangePasswordComponent} from "./component/change-password/change-password.component";
+import {JwtInterceptor} from "./helper/jwt-interceptor";
+import {ErrorInterceptor} from "./helper/error-interceptor";
+import {FacebookLoginProvider, SocialAuthServiceConfig} from "@abacritt/angularx-social-login";
+import {AddFirstWalletComponent} from "./component/login/add-first-wallet/add-first-wallet.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +57,8 @@ import {ChangePasswordComponent} from "./component/change-password/change-passwo
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AddFirstWalletComponent
   ],
   imports: [
     MatInputModule,
@@ -83,7 +88,30 @@ import {ChangePasswordComponent} from "./component/change-password/change-passwo
     NgxPaginationModule,
     MatPaginatorModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor, multi: true
+    }, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor, multi: true
+    },{
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('452735883619565')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

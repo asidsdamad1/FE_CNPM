@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 export class NavBarComponent implements OnInit {
   image: any;
   wallet: any;
+  isLack: boolean | undefined;
   constructor(private walletService: WalletService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,5 +26,9 @@ export class NavBarComponent implements OnInit {
     this.walletService.findById(localStorage.getItem('ID_WALLET')).subscribe((wallet) => {
       this.wallet = wallet;
     })
+  }
+
+  isLackOfMoney() : boolean {
+    return this.isLack = this.wallet.moneyAmount < 0;
   }
 }

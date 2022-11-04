@@ -3400,7 +3400,7 @@ body::-webkit-scrollbar {
   min-height: 68vh;
   transition: .5s;
   margin: 30px;
-  background-color: #F7FAFF;
+  background-color: #fff;
 }
 
 @media (max-width: 991px) {

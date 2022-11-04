@@ -5,19 +5,21 @@ import {Router} from "@angular/router";
 import {NgToastService} from "ng-angular-popup";
 
 @Component({
-  selector: 'app-add-wallet',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  selector: 'app-add-first-wallet',
+  templateUrl: './add-first-wallet.component.html',
+  styleUrls: ['./add-first-wallet.component.css']
 })
-export class AddWalletComponent implements OnInit {
+export class AddFirstWalletComponent implements OnInit {
 
-  walletForm = new FormGroup({
+  firstWalletForm = new FormGroup({
     name: new FormControl(),
     moneyType: new FormControl(),
     moneyAmount: new FormControl()
+
   });
   icon: any;
-  wallet: any;
+  firstWallet: any;
+  wallets: any;
 
   constructor(private walletService: WalletService,
               private router: Router,
@@ -25,35 +27,45 @@ export class AddWalletComponent implements OnInit {
 
   ngOnInit(): void {
     this.icon = "https://static.moneylover.me/img/icon/icon_32.png"
+    // @ts-ignore
+    document.getElementById('showModal').click();
   }
 
   changeIcon(event: any) {
     this.icon = event.target.src;
   }
 
-  @Output()
-  onNewWallet = new EventEmitter<any>()
-
-  addWallet() {
-    this.wallet = {
-      name: this.walletForm.value.name,
+  addFirstWallet() {
+    this.firstWallet = {
+      name: this.firstWalletForm.value.name,
       moneyType: {
-        id: this.walletForm.value.moneyType,
+        id: this.firstWalletForm.value.moneyType,
       },
       icon: this.icon,
-      moneyAmount: this.walletForm.value.moneyAmount,
-      status: 1,
+      moneyAmount: this.firstWalletForm.value.moneyAmount,
+      status: 2,
       user: {
         id: localStorage.getItem('ID')
       }
     }
-    console.log(this.wallet)
-    this.walletService.save(this.wallet).subscribe((data) => {
-      this.onNewWallet.emit(data)
+    console.log(this.firstWallet)
+    this.walletService.save(this.firstWallet).subscribe((data) => {
       this.toast.success({detail:"Thông báo", summary: "Thêm ví thành công!",duration: 3000,position:'br'})
-      this.router.navigate(['/wallet' + localStorage.getItem('ID_WALLET')]).then();
+      this.walletService.findAll().subscribe(wallets => {
+        this.wallets = wallets;
+        if (this.wallets.length != 0) {
+          for (let i = 0; i < this.wallets.length; i++) {
+            if (this.wallets[i].status == 2) {
+              localStorage.setItem('ID_WALLET', String(this.wallets[i].id));
+            }
+          }
+          location.reload();
+        }
+      })
+      this.router.navigate(['/home']).then();
     }, error => {
       this.toast.error({detail:"Thông báo", summary: "Thêm ví thất bại!",duration: 3000,position:'br'})
     })
   }
+
 }

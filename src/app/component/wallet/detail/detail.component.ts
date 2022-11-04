@@ -110,7 +110,7 @@ export class DetailWalletComponent implements OnInit {
     if (this.wallet.id == localStorage.getItem('ID_WALLET')) {
       Swal.fire({
         title: '<h3 style="color: #575656">Bạn muốn xóa ví ?</h3>',
-        text: 'Ví này hiện đang sử dụng nên không thể xóa !',
+        text: 'Ví này hiện đang sử dụng nên không thể xóa!',
         icon: 'warning',
         confirmButtonText: 'Xác nhận',
       })
@@ -119,7 +119,7 @@ export class DetailWalletComponent implements OnInit {
       Swal.fire({
         title: '<h3 style="color: #5ec05e"><img src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw340" style="width: 100px;height: 100px"><\h3>',
         html: 'Ví sẽ được xóa trong <b></b> mili giây',
-        timer: 2850,
+        timer: 1500,
         timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading();
@@ -146,7 +146,7 @@ export class DetailWalletComponent implements OnInit {
             id: localStorage.getItem('ID')
           }
         }
-        this.walletService.delete(this.wallet.id, this.walletDelete).subscribe(() => {
+        this.walletService.delete(this.wallet.id).subscribe(() => {
           this.toast.success({detail: 'Thông báo!', summary: "Xóa ví thành công!",duration: 3000,position:'br'});
           setInterval(() => {
             location.reload()

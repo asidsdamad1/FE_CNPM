@@ -31,8 +31,8 @@ export class WalletService {
     return this.httpClient.put(API + '/edit-money-type/'+ id, wallet);
   }
 
-  delete(id: number, wallet: any): Observable<any> {
-    return this.httpClient.put(API + '/delete/' + id, wallet);
+  delete(id: number): Observable<any> {
+    return this.httpClient.delete(API + '/delete/' + id);
   }
 
   updateStatus(id: number, wallet: any): Observable<any> {
